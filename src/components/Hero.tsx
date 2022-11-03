@@ -1,9 +1,9 @@
 function Hero() {
 
     return (
-        <section className="flex md:flex-row flex-col sm:py-16 py-6 max-w-[1240px] mx-auto mt-10">
+        <section className="flex md:flex-row flex-col-reverse sm:py-16 py-6 max-w-[1240px] mx-auto mt-10">
             <div className="flex-1 flex justify-center items-start flex-col xl:px-0 sm:px-16 px-6">
-                <div className="flex flex-row items-center py-[6px] px-4 bg-gradient-to-r from-gray-500/20 to-gray-400/20 rounded-[10px] mb-2">
+                <div className="flex flex-row  items-center py-[6px] px-4 bg-gradient-to-r from-gray-500/20 to-gray-400/20 rounded-[10px] mb-2">
                     <p className="font-normal text-[18px] leading-[30.8px] flex items-center">
                         <span className="text-white mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -31,7 +31,7 @@ function Hero() {
             </div>
 
             <div className="flex-1 flex justify-center items-center md:my-0 my-10 relative">
-                <img src="https://www.alexotos.com/wp-content/uploads/2021/08/DSCF0165.png" alt="billing" className="w-[100%] h-[100%] relative z-[5]" />
+                <img src="https://www.alexotos.com/wp-content/uploads/2021/08/DSCF0165.png" alt="billing" className="w-[100%] h-[100%] relative z-[5] object-contain" />
 
                 {/* gradient start */}
                 <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />

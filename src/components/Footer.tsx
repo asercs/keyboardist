@@ -3,7 +3,7 @@ function Footer () {
         <div className="text-white flex flex-col w-full max-w-[1240px] mx-auto mt-8">
             <div className="flex justify-around mb-6">
                 <div>
-                    <ul>
+                    <ul className="text-2xl">
                         <li className="font-extrabold">Hello</li>
                         <li><a href="">Something</a></li>
                         <li><a href="">Something</a></li>
@@ -11,7 +11,7 @@ function Footer () {
                     </ul>
                 </div>
                 <div>
-                    <ul>
+                    <ul className="text-2xl">
                         <li className="font-extrabold">Hello</li>
                         <li><a href="">Something</a></li>
                         <li><a href="">Something</a></li>
@@ -24,7 +24,7 @@ function Footer () {
                     Copyright Ⓒ 2022 Keyboardist. All Rights Reserved.
                 </p>
 
-                <div className="flex flex-row md:mt-0 mt-6">
+                <div className="flex flex-row md:mt-0 mt-6 justify-center mb-6 md:mb-0">
                     <a href="" className="w-[21px] h-[21px] object-contain cursor-pointer mr-6">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" className="w-6 h-6">
