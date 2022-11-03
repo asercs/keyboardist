@@ -15,7 +15,7 @@ function Arrival() {
                     </h2>
 
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 my-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 my-10">
                 <div className="bg-gray-600/40 rounded-md p-5 text-white flex flex-col justify-center items-center">
                     <div className="mb-4">
                         <img src="https://www.alexotos.com/wp-content/uploads/2021/08/DSCF0165.png" alt="arrival" className="p-4"/>
