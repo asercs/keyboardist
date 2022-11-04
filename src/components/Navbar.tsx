@@ -1,4 +1,8 @@
+import {useState} from "react";
+
 function Navbar() {
+
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <header className="mx-auto p-5 text-white max-w-[1240px]">
@@ -33,14 +37,50 @@ function Navbar() {
                     </div>
                 </div>
             </div>
-            <div className="lower-nav mt-8">
+            {!isOpen ? (<div className="lower-nav-mobile mt-8 sm:hidden" onClick={() => setIsOpen(!isOpen)}>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" className="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                    </svg>
+                </div>
+            </div>) : ""}
+
+            <ul className={isOpen ? 'z-[6] fixed left-0 top-0 w-full h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500' : 'ease-in-out duration-500 fixed left-[-100%]'}>
+                <div className="flex justify-between items-center">
+                    <h1 className='w-full text-3xl font-bold text-cyan-400 m-4'>Keyboardist</h1>
+                    <div onClick={() => setIsOpen(false)} className='block md:hidden mr-2'>
+                        {isOpen ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" className="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>) : ""}
+                    </div>
+                </div>
+
+                <li className="p-4 border-b border-gray-600"><a href="">Home</a></li>
+                <li className="p-4 border-b border-gray-600"><a href="" className="flex">Shop
+                    <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" className="w-4 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                            </svg>
+</span></a></li>
+                <li className="p-4 border-b border-gray-600"><a href="">Typing</a></li>
+                <li className="p-4 border-b border-gray-600"><a href="">Wiki</a></li>
+                <li className="p-4 border-b border-gray-600"><a href="">About us</a></li>
+            </ul>
+
+            <div className="lower-nav mt-8 hidden sm:block">
                 <ul className="flex font-bold">
                     <li className=""><a href="">Home</a></li>
                     <li className="ml-8"><a href="" className="flex">Shop
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                    viewBox="0 0 24 24" stroke-width="1.5"
-                                                                    stroke="currentColor" className="w-4 h-6">
+                                 viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" className="w-4 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
                             </svg>
 </span></a></li>
@@ -49,6 +89,7 @@ function Navbar() {
                     <li className="ml-8"><a href="">About us</a></li>
                 </ul>
             </div>
+
         </header>
     )
 }
