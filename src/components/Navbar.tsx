@@ -11,7 +11,7 @@ function Navbar() {
             <div className="upper-nav">
                 <div className="flex justify-between items-center">
                     <h1 className="font-extrabold text-3xl md:text-2xl">Keyboardist</h1>
-                    {search ? <Search /> : ""}
+                    {search ? <DeskSearch /> : ""}
 
                     <div className="icons flex">
                         {/*<div className="icon hidden md:block" onClick={()=>setSearch(true)}>*/}
@@ -149,6 +149,38 @@ class MobDropDown extends React.Component {
                     </ul>
             </div>
         )
+    }
+}
+
+class DeskSearch extends React.Component {
+    render() {
+        return (
+            <div className={'py-4 md:py-0 flex-1 px-16 hidden sm:block'}>
+                <form>
+                    <label htmlFor="default-search"
+                           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
+                    <div className="relative">
+                        <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                            <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <input type="search" id="default-search"
+                               className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder="Search"/>
+                        <div className="flex absolute inset-y-0 right-2 items-center pl-3 pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke-width="1.5" stroke="currentColor" className="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        );
     }
 }
 
