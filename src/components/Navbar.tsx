@@ -91,7 +91,7 @@ function Navbar() {
             <div className="lower-nav mt-8 hidden sm:block">
                 <ul className="flex font-bold text-2xl relative">
                     <li className=""><a href="">Home</a></li>
-                    <li className="ml-16" id="navShop"><p className="flex items-center" >Shop
+                    <li className="ml-16 relative" id="navShop"><p className="flex items-center" >Shop
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                  viewBox="0 0 24 24" stroke-width="3"
