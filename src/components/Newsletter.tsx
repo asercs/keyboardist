@@ -1,7 +1,7 @@
 function Newsletter() {
     return (
         <div className="w-full max-w-[1240px] text-white mx-auto">
-            <div className="p-16 flex flex-col justify-center items-center">
+            <div className="p-8 md:p-16 flex flex-col justify-center items-center">
                 <h1 className="font-extrabold text-3xl">NEWSLETTER</h1>
                 <hr className="w-8 my-4 mb-8"/>
                 <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4 w-full md:px-24">
