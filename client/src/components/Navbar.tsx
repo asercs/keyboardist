@@ -143,7 +143,7 @@ class MobDropDown extends React.Component {
         <div className="dropdown">
           <ul className="pl-4 py-4">
             <li className="py-1">
-              <a href="">All items</a>
+              <Link to="/shop">All items</Link>
             </li>
             <li className="py-1">
               <a href="">Keyboards</a>
