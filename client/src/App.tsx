@@ -4,10 +4,9 @@ import { Homepage } from './pages/Homepage';
 import { Notfound } from './pages/Notfound';
 import { Signup } from './pages/Signup';
 import { Signin } from './pages/Signin';
-import { useEffect, useState } from 'react';
-import Footer from './components/Footer';
 import {ProductPage} from "./pages/ProductPage";
 import {Shop} from "./pages/Shop";
+import {Cart} from "./pages/Cart";
 
 function App() {
   // const [user, setUser] = useState('');
@@ -50,6 +49,7 @@ function App() {
                 <Route index element={<Homepage/>} />
                 <Route path="shop" element={<Shop/>} />
                 <Route path="product" element={<ProductPage/>} />
+                <Route path="cart" element={<Cart/>} />
 
 
               </Route>
