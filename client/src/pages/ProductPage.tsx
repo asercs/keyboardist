@@ -1,22 +1,52 @@
 import Footer from "../components/Footer";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import {useState} from "react";
+const images = [
+    { url: "https://cdn.shopify.com/s/files/1/1473/3902/products/8b9cc7c9808a81fc8db0eaf67a4d79d7_d24bd98b-2840-4abe-8f57-ce2fec2b2431_900x.jpg?v=1667263996" },
+    { url: "https://cdn.shopify.com/s/files/1/1473/3902/products/pc_fr4_900x.jpg?v=1667365007" },
+];
+const items = [
+    {
+        "id": 0,
+        "name": "Coral"
+    },
+    {
+        "id": 1,
+        "name": "Black"
+    },
+    {
+        "id": 2,
+        "name": "Cobalt"
+    }
+]
+
+
 
 const ProductPage = () => {
+    const [activeItem, setActiveItem] = useState(0)
     return (
         <div className="w-full max-w-[1240px] mx-auto px-4 xl:px-0 py-4">
             <div className="text-white">
-                <div className="flex md:flex-row flex-col sm:py-16 py-6 mx-auto mt-10">
-                    <div className="flex flex-1">
-                        <img src="https://cdn.shopify.com/s/files/1/1473/3902/products/14_54671611-0ae3-47d3-86dc-fa5781aab07d_540x.jpg?v=1666764958" alt="" className="rounded-2xl"/>
-                    </div>
+                <div className="flex md:flex-row flex-col sm:py-16 py-6 mx-auto mt-10 gap-4">
+                    <Carousel className="flex flex-1 flex-wrap">
+                        <div>
+                            <img src={images[0].url} alt=""/>
+                        </div>
+                        <div>
+                            <img src={images[1].url} alt=""/>
+                        </div>
+                        
+                    </Carousel>
                     <div className="flex flex-1 flex-col font-bold">
                         <h1 className="text-2xl">MICROCRYSTALLINE STONE WIZARD NEBULA WRIST REST</h1>
                         <h1 className="font-extrabold text-3xl">$24.00</h1>
                         <h2 className="text-xl my-4">8 in stock</h2>
                         <h5 className="font-medium">Color</h5>
                         <ul className="flex font-bold gap-4 my-4">
-                            <li className="p-2 px-4 bg-cyan-300 rounded-xl">Cloud</li>
-                            <li className="p-2 px-4 border-2 border-cyan-300 rounded-xl">Poison</li>
-                            <li className="p-2 px-4 border-2 border-cyan-300 rounded-xl">Drainage</li>
+                            {items.map((item) => (
+                                <li key={item.id} onClick={()=> setActiveItem(item.id)} className={`px-4 py-2 rounded-lg ${activeItem === item.id ? 'bg-cyan-300 border-2 border-cyan-300' : 'border-2 border-gray-50'}`}>{item.name}</li>
+                            ))}
                         </ul>
                         <button className="text-xl font-bold p-2 rounded-xl bg-cyan-500 my-4">
                             ADD TO CART
