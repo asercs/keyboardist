@@ -31,16 +31,16 @@ const Signin = () => {
   }
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen md:h-screen lg:py-0">
         <Link
           to="/"
-          className="flex items-center mb-6 text-3xl font-semibold text-gray-900 dark:text-white">
+          className="flex items-center mb-6 text-3xl font-semibold text-white">
           Keyboardist
         </Link>
         <div className="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
               Sign in to your account
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={submit}>
