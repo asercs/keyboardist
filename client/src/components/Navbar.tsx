@@ -1,14 +1,14 @@
 import React, {useState} from "react";
-import {Link, Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
+
 
 function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState(true)
   const [dropDown, setDropDown] = useState(false)
-
   return (
-      <>
+      <div className="h-full">
         <header className="mx-auto p-5 text-white max-w-[1240px]">
           <div className="upper-nav">
             <div className="flex justify-between items-center">
@@ -16,14 +16,6 @@ function Navbar() {
               {search ? <DeskSearch /> : ""}
 
               <div className="icons flex">
-                {/*<div className="icon hidden md:block" onClick={()=>setSearch(true)}>*/}
-                {/*    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"*/}
-                {/*         stroke="currentColor" className="w-8 h-8">*/}
-                {/*        <path stroke-linecap="round" stroke-linejoin="round"*/}
-                {/*              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>*/}
-                {/*    </svg>*/}
-
-                {/*</div>*/}
                 <Link to="signup">
                   <div className="icon ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
@@ -113,8 +105,7 @@ function Navbar() {
           </div>
 
         </header>
-        <Outlet/>
-      </>
+      </div>
   )
 }
 
@@ -148,10 +139,10 @@ class MobDropDown extends React.Component {
               <Link to="/shop">All items</Link>
             </li>
             <li className="py-1">
-              <a href="">Keyboards</a>
+              <Link to="">Keyboards</Link>
             </li>
             <li className="py-1">
-              <a href="">Switches</a>
+              <Link to="">Switches</Link>
             </li>
           </ul>
         </div>

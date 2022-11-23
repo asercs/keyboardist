@@ -8,6 +8,10 @@
     filter: blur(123px);
 }
 
+.minHeight {
+    min-height: calc(100vh - 220px - 182px);
+}
+
 .pink__gradient {
     background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
     filter: blur(900px);
@@ -20,4 +24,5 @@
 
 #navShop:hover #navDrop {
     display: block;
+    backdrop-filter: blur(4px);
 }

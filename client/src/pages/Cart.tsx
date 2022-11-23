@@ -1,8 +1,7 @@
-import Footer from "../components/Footer";
 
 const Cart = () => {
     return (
-        <div className="w-full max-w-[1240px] mx-auto px-4 xl:px-0 py-4">
+        <div className="w-full max-w-[1240px] mx-auto px-4 xl:px-0 py-4 minHeight">
             <div className="text-white">
                 <div className="p-4">
                     <div className="font-extrabold grid grid-cols-6 hidden md:grid border-b-2 border-gray-500 pb-4">
@@ -112,7 +111,6 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
         </div>
     );
 }

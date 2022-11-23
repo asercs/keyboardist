@@ -1,15 +1,33 @@
 import {Link} from "react-router-dom";
-import Footer from "../components/Footer";
-import React from "react";
+import React, {useEffect} from "react";
 import Select from "react-select";
 
+
+type Product = {
+    id: number;
+    name: string;
+    price: number;
+    brand: string;
+    quantity: number;
+    description: string;
+    images: string[];
+    product_type: string;
+    order: number;
+};
+
 const Shop = () => {
+    const [products, setProducts] = React.useState<Product[]>([]);
+    useEffect(() => {
+        fetch('http://localhost:8000/getAllItems')
+            .then((res) => res.json())
+            .then((data: Product[]) => setProducts(data));
+    }, []);
 
 
     const options = [
         { value: 'yes', label: 'Yes' },
         { value: 'no', label: 'No' },
-    ]
+    ];
     return (
         <div className="w-full max-w-[1240px] mx-auto px-4 xl:px-0 py-4">
             <div className="text-white">
@@ -27,29 +45,6 @@ const Shop = () => {
                                     primary: 'black',
                                 },
                             })}/>
-                            {/*<details className="border-2 rounded-xl" open={isOpen}>*/}
-                            {/*    <summary className="list-none p-3">Availability</summary>*/}
-                            {/*    <div className="relative">*/}
-                            {/*        <div className="p-4 bg-gray-600 rounded-2xl w-64 absolute top-4">*/}
-                            {/*            <div className="border-b-2 p-2 font-bold">15 results</div>*/}
-                            {/*            <div className="p-2">*/}
-                            {/*                <ul>*/}
-                            {/*                    <li>*/}
-                            {/*                        <input id="default-checkbox" type="checkbox" value=""*/}
-                            {/*                               className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>*/}
-                            {/*                        <label htmlFor="default-checkbox"*/}
-                            {/*                               className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default*/}
-                            {/*                            checkbox</label>*/}
-                            {/*                    </li>*/}
-                            {/*                    <li>*/}
-                            {/*                        <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>*/}
-                            {/*                        <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Out of stock</label>*/}
-                            {/*                    </li>*/}
-                            {/*                </ul>*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</details>*/}
                         </div>
 
                     </div>
@@ -82,41 +77,24 @@ const Shop = () => {
                     </div>
                 </Link>
 
-                <div className="bg-gray-600/40 rounded-md p-5 text-white flex flex-col justify-center items-center">
-                    <div className="mb-4">
-                        <img
-                            src="https://cdn.shopify.com/s/files/1/1473/3902/products/0_96b338f0-446d-43ed-83a0-7a26c5d3dead_900x.jpg?v=1665646319"
-                            alt="arrival" className="h-64 object-contain"/>
-                    </div>
-                    <div>
-                        <h1 className="font-extrabold mb-2">Luna 80</h1>
-                        <h2 className="font-bold">499 $</h2>
-                    </div>
-                </div>
-                <div className="bg-gray-600/40 rounded-md p-5 text-white flex flex-col justify-center items-center">
-                    <div className="mb-4">
-                        <img
-                            src="https://cdn.shopify.com/s/files/1/1473/3902/products/0_96b338f0-446d-43ed-83a0-7a26c5d3dead_900x.jpg?v=1665646319"
-                            alt="arrival" className="h-64 object-contain"/>
-                    </div>
-                    <div>
-                        <h1 className="font-extrabold mb-2">Luna 80</h1>
-                        <h2 className="font-bold">499 $</h2>
-                    </div>
-                </div>
-                <div className="bg-gray-600/40 rounded-md p-5 text-white flex flex-col justify-center items-center">
-                    <div className="mb-4">
-                        <img
-                            src="https://cdn.shopify.com/s/files/1/1473/3902/products/0_96b338f0-446d-43ed-83a0-7a26c5d3dead_900x.jpg?v=1665646319"
-                            alt="arrival" className="h-64 object-contain"/>
-                    </div>
-                    <div>
-                        <h1 className="font-extrabold mb-2">Luna 80</h1>
-                        <h2 className="font-bold">499 $</h2>
-                    </div>
-                </div>
+                {products.map((product: Product) => (
+                    <Link to={`/product/${product.order}`}>
+                        <div className="bg-gray-600/40 rounded-md p-5 text-white flex flex-col justify-center items-center">
+                            <div className="mb-4">
+                                <img
+                                    src={product.images[0]}
+                                    alt="arrival"
+                                    className="h-64 object-contain"
+                                />
+                            </div>
+                            <div>
+                                <h1 className="font-extrabold mb-2">{product.name}</h1>
+                                <h2 className="font-bold">{product.price} $</h2>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
             </div>
-            <Footer/>
         </div>
     )
 }
