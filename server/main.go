@@ -30,7 +30,8 @@ func main() {
 	client := database.ConnectToMongo(os.Getenv("MONGO_URI"))
 	defer client.Disconnect(ctx)
 
-	database.CreateDatabase(os.Getenv("DATABASE_NAME"), os.Getenv("COLLECTION_NAME"))
+	database.CreateCollection(os.Getenv("DATABASE_NAME"), os.Getenv("COLLECTION_NAME"))
+	database.CreateCollection(os.Getenv("DATABASE_NAME"), os.Getenv("COLLECTION_KEYBOARD"))
 	defer database.DropDatabase(os.Getenv("DATABASE_NAME"))
 
 	app := fiber.New()

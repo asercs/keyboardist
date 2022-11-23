@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/RamazanZholdas/Keyboardist/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -25,7 +26,7 @@ func ConnectToMongo(mongoUri string) *mongo.Client {
 	return client
 }
 
-func CreateDatabase(databaseName string, collection string) {
+func CreateCollection(databaseName string, collection string) {
 	ctx := context.Background()
 	db := client.Database(databaseName)
 	err := db.CreateCollection(ctx, collection)
@@ -67,7 +68,60 @@ func FindOneFromDb(databaseName string, collection string, filter bson.M) []bson
 	return resultOne
 }
 
+func FindAllFromDb(databaseName string, collection string) (keyboards []*models.Keyboard, err error) {
+	ctx := context.Background()
+	db := client.Database(databaseName)
+	keyboardCollection := db.Collection(collection)
+	fCursor, err := keyboardCollection.Find(ctx, bson.M{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err = fCursor.All(ctx, &keyboards); err != nil {
+		log.Fatal(err)
+	}
+	return keyboards, nil
+}
+
+func UpdateOneUserFromDb(databaseName string, collection string, user models.User) *mongo.UpdateResult {
+	ctx := context.Background()
+	db := client.Database(databaseName)
+	filter := bson.M{"email": user.Email}
+	update := bson.M{"$set": bson.M{"cart": user.Cart}}
+	result, err := db.Collection(collection).UpdateOne(ctx, filter, update)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return result
+}
+
+//function that counts elements in collection
+func CountElementsInCollection(databaseName string, collection string) int64 {
+	ctx := context.Background()
+	db := client.Database(databaseName)
+	count, err := db.Collection(collection).CountDocuments(ctx, bson.M{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	return count
+}
+
 /*
+
+func FindAllFromDb(databaseName string, collection string) []bson.M {
+	ctx := context.Background()
+	db := client.Database(databaseName)
+	userCollection := db.Collection(collection)
+	fCursor, err := userCollection.Find(ctx, bson.M{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	var resultAll []bson.M
+	if err = fCursor.All(ctx, &resultAll); err != nil {
+		log.Fatal(err)
+	}
+	return resultAll
+}
+
 client, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("MONGO_URI")))
 	if err != nil {
 		log.Fatal(err)
