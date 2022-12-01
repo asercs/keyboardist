@@ -5,7 +5,7 @@ function About() {
             <div className="grid grid-cols-1 md:grid-cols-3 px-4 xl:px-0 text-white my-8">
                 <div className="col-span-1 relative">
                     <img src="https://cdn.shopify.com/s/files/1/0238/7342/1376/products/DSC_7562.png?v=1666911980" alt="about" className="p-4 w-full h-full object-cover"/>
-                    <h1 className="absolute top-8 left-8 font-extrabold text-4xl">ABOUT US</h1>
+                    <h1 className="absolute top-8 left-8 font-extrabold text-4xl">LATEST NEWS</h1>
                 </div>
                 <div className="col-span-2 py-2 md:py-8">
                     <hr className="w-48 h-1 bg-white rounded border-0"/>

@@ -11,6 +11,8 @@ import Layout from "./components/Layout";
 import {Wiki} from "./pages/Wiki";
 import {useEffect, useState} from "react";
 import {ProductPageDynamic} from "./pages/ProductPageDynamic";
+import {Checkout} from "./pages/Checkout";
+import {About} from "./pages/About";
 
 function App() {
   const [user, setUser] = useState('');
@@ -41,16 +43,18 @@ function App() {
           <div className="w-full">
             {/*<Navbar/>*/}
             <Routes>
-              <Route path="/" element={<Layout/>}>
+              <Route path="/" element={<Layout props={user}/>}>
                 <Route index element={<Homepage/>} />
                 <Route path="shop" element={<Shop/>} />
                 <Route path="product" element={<ProductPage/>} />
                 <Route path="product/:order" element={<ProductPageDynamic/>} />
+                <Route path="about" element={<About/>} />
                 <Route path="cart" element={<Cart/>}  key={document.location.href}/>
                 <Route path="typing" element={<Typing/>} />
                 <Route path="wiki" element={<Wiki/>} />
               </Route>
 
+              <Route path="checkout" element={<Checkout/>} />
               <Route path="*" element={<Notfound/>} />
               <Route path="signup" element={<Signup/>} />
               <Route path="signin" element={<Signin/>} />

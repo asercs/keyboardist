@@ -11,7 +11,7 @@ type Product = {
   product_type: string;
   order: number;
 };
-
+let total = 0;
 const Cart = () => {
   const [products, setProducts] = React.useState<Product[]>([]);
   useEffect(() => {
@@ -26,6 +26,9 @@ const Cart = () => {
       setProducts(content);
     })()
     console.log(products);
+    products.map((product) => {
+      total += product.price;
+    })
 
   }, []);
 
@@ -59,7 +62,7 @@ const Cart = () => {
               <h1 className="pl-4">{product?.name}</h1>
             </div>
             <h1 className="text-left md:text-right col-span-2 md:col-span-1 py-2 md:py-0">
-            {product?.price}$
+            {total}$
             </h1>
             <div className="col-span-2 md:col-span-1 flex justify-start md:justify-end">
               <div className="flex flex-row h-10 w-24 rounded-lg relative bg-transparent">
