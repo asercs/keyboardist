@@ -3,9 +3,11 @@ package controllers
 import (
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/RamazanZholdas/Keyboardist/database"
 	"github.com/RamazanZholdas/Keyboardist/models"
+	"github.com/dgrijalva/jwt-go/v4"
 	"github.com/gofiber/fiber/v2"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -13,51 +15,38 @@ import (
 
 /*
 	{
-		"id":"some id here"
-	}
-
-	for testing:
-
-	{
-		"id":"some id here",
-		"email":"some email here",
+		"order":"some id here"
 	}
 */
 
 func AddToCart(c *fiber.Ctx) error {
-	var request map[string]string
+	cookie := c.Cookies("jwt")
 
-	if err := c.BodyParser(&request); err != nil {
-		return err
+	fmt.Println("Кукис: ", cookie)
+
+	token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return []byte(os.Getenv("SECRET_KEY")), nil
+	})
+
+	fmt.Println("Токен: ", token)
+
+	if err != nil {
+		fmt.Println(err, "message unauthenticated")
+		return c.Status(401).JSON(fiber.Map{
+			"message": "Unauthenticated",
+		})
 	}
 
-	/*
-		//with jwt
-		cookie := c.Cookies("jwt")
-
-		token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
-			return []byte(os.Getenv("SECRET_KEY")), nil
-		})
-
-		if err != nil {
-			return c.Status(401).JSON(fiber.Map{
-				"message": "Unauthenticated",
-			})
-		}
-
-		claims := token.Claims.(*jwt.StandardClaims)
-
-		var user models.User
-
-		filter := bson.M{"email": claims.Issuer}*/
+	claims := token.Claims.(*jwt.StandardClaims)
 
 	var user models.User
 
-	filter := bson.M{"email": request["email"]}
+	filter := bson.M{"email": claims.Issuer}
 
 	resultOne := database.FindOneFromDb(os.Getenv("DATABASE_NAME"), os.Getenv("COLLECTION_NAME"), filter)
 
 	if resultOne == nil {
+		fmt.Println("User not found vnature")
 		return c.Status(401).JSON(fiber.Map{
 			"message": "User not found",
 		})
@@ -67,12 +56,24 @@ func AddToCart(c *fiber.Ctx) error {
 		fmt.Println("Before change", resultOne[0]["cart"].(primitive.A))
 	}
 
-	objID, _ := primitive.ObjectIDFromHex(request["id"])
-	filter = bson.M{"_id": objID}
+	fmt.Println("user found")
+
+	Order := c.Params("order")
+	number, err := strconv.Atoi(Order)
+	if err != nil {
+		return c.Status(400).JSON(fiber.Map{
+			"message": "Invalid order",
+		})
+	}
+
+	fmt.Println("request parsed congratz")
+
+	filter = bson.M{"order": number}
 
 	resultTwo := database.FindOneFromDb(os.Getenv("DATABASE_NAME"), os.Getenv("COLLECTION_KEYBOARD"), filter)
 
 	if resultTwo == nil {
+		fmt.Println("Keyboard not found vnature")
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Keyboard not found",
 		})

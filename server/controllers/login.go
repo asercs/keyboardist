@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"os"
 	"time"
 
@@ -58,6 +59,10 @@ func Login(c *fiber.Ctx) error {
 	}
 
 	c.Cookie(&cookie)
+
+	fmt.Println(cookie)
+	fmt.Println(token)
+	fmt.Println(c)
 
 	return c.JSON(fiber.Map{
 		"message": "success",

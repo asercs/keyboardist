@@ -11,8 +11,8 @@ func Setup(app *fiber.App) {
 	app.Get("/user", controllers.User)
 	app.Post("/logout", controllers.Logout)
 	app.Get("/getAllItems", controllers.GetAllItems)
-	app.Put("/insertProduct", controllers.InsertProduct)
-	app.Put("/addToCart", controllers.AddToCart)
+	app.Post("/insertProduct", controllers.InsertProduct)
+	app.Post("/addToCart/:order", controllers.AddToCart)
 	app.Get("/getCart", controllers.GetAllFromCart)
 	app.Get("/getKeyboard/:order", controllers.GetKeyboard)
 }

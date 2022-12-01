@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch('http://127.0.0.1:8000/user', {
+      const response = await fetch('http://localhost:8000/user', {
         headers: { 'Content-type': 'application/json' },
         method: 'GET',
         credentials: 'include',
@@ -46,7 +46,7 @@ function App() {
                 <Route path="shop" element={<Shop/>} />
                 <Route path="product" element={<ProductPage/>} />
                 <Route path="product/:order" element={<ProductPageDynamic/>} />
-                <Route path="cart" element={<Cart/>} />
+                <Route path="cart" element={<Cart/>}  key={document.location.href}/>
                 <Route path="typing" element={<Typing/>} />
                 <Route path="wiki" element={<Wiki/>} />
               </Route>
