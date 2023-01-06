@@ -4,12 +4,12 @@ import {Link} from "react-router-dom";
 
 
 
-function Navbar(props: {user: string}) {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState(true)
   const [dropdown, setDropdown] = useState(false)
   const [dropDown, setDropDown] = useState(false)
-
+    const user = 'Alex';
     const myRef = useRef<any>(null)
 
     useEffect(() => {
@@ -32,7 +32,7 @@ function Navbar(props: {user: string}) {
         <header className="mx-auto p-5 text-white max-w-[1240px]">
           <div className="upper-nav">
             <div className="flex justify-between items-center">
-              <Link to="/"><h1 className="font-extrabold text-3xl md:text-2xl">Keyboardist ${props.user}</h1></Link>
+              <Link to="/"><h1 className="font-extrabold text-3xl md:text-2xl">Keyboardist</h1></Link>
               {search ? <DeskSearch /> : ""}
 
               <div className="icons flex" >
@@ -53,7 +53,7 @@ function Navbar(props: {user: string}) {
                           </ul>
                       ) : null}
                   </button>
-                  {props.user ?
+                  {user ?
                       (<Link to="signup">
                           <div className="icon ml-2">
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
