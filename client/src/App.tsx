@@ -45,7 +45,8 @@ function App() {
           <div className="w-full">
             {/*<Navbar/>*/}
             <Routes>
-              <Route path="/" element={<Layout props={user}/>}>
+              {/*<Route path="/" element={<Layout state={{user: user}}/>}>*/}
+              <Route path="/" element={<Layout/>}>
                 <Route index element={<Homepage/>} />
                 <Route path="shop" element={<Shop/>} />
                 <Route path="product" element={<ProductPage/>} />

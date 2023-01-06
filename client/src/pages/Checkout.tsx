@@ -1,6 +1,7 @@
 import React from "react";
 
-const Checkout = (props: string) => {
+// const Checkout = (props: string) => {
+const Checkout = () => {
     return (
         <div className="w-full max-w-[1240px] mx-auto px-4 xl:px-0 py-4 h-screen overflow-auto my-auto">
             <div

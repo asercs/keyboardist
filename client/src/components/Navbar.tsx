@@ -10,10 +10,10 @@ function Navbar(props: {user: string}) {
   const [dropdown, setDropdown] = useState(false)
   const [dropDown, setDropDown] = useState(false)
 
-    const myRef = useRef(null)
+    const myRef = useRef<any>(null)
 
     useEffect(() => {
-        function handleClickOutside(event) {
+        function handleClickOutside(event: any) {
             if (myRef.current && !myRef.current.contains(event.target)) {
                 setDropdown(false)
             }
@@ -121,7 +121,7 @@ function Navbar(props: {user: string}) {
   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
                             </svg>
 </span></p>
-              {dropDown ? <MobDropDown data={isOpen.data}/> : ""}</li>
+              {dropDown ? <MobDropDown data={isOpen}/> : ""}</li>
             <li className="p-4 border-b border-gray-600"><Link to="/typing">Typing</Link></li>
             <li className="p-4 border-b border-gray-600"><Link to="/wiki">Wiki</Link></li>
             <li className="p-4 border-b border-gray-600"><Link to="/about">About us</Link></li>
