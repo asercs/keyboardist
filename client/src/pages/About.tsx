@@ -1,8 +1,8 @@
 const About = () => {
     return (
         <div className="w-full max-w-[1240px] mx-auto px-4 xl:px-0 py-4 minHeight text-white">
-            <div className="p-4 my-16 text-center">
-                <h1 className="font-extrabold text-2xl mb-6">Introduction</h1>
+            <div className="p-4 text-center">
+                <h1 className="font-extrabold text-3xl mb-6">Introduction</h1>
                 <h1 className="font-bold text-xl">Keyboardist is a website that helps geeks, gamers and everyone else access to world of mechanical keyboards.
                     You can find yourself a brand new or used keyboard, it can be built or barebones, mass market and even custom.
                 </h1>

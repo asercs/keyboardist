@@ -27,7 +27,7 @@ function Hero() {
                 <h1 className="font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] w-full">
                     IN STOCK KIT
                 </h1>
-                <button className="text-white py-2 px-6 mt-8 bg-gradient-to-r from-cyan-300/80 to-cyan-200/80 rounded-2xl font-bold text-xl">Buy now</button>
+                <button className="text-white py-2 px-6 mt-8 bg-gradient-to-r from-cyan-300/80 to-cyan-200/80 rounded-2xl font-bold text-xl hover:opacity-90 active:translate-y-0.5">Buy now</button>
             </div>
 
             <div className="flex-1 flex justify-center items-center md:my-0 my-10 relative">

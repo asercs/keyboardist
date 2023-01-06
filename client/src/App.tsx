@@ -13,6 +13,8 @@ import {useEffect, useState} from "react";
 import {ProductPageDynamic} from "./pages/ProductPageDynamic";
 import {Checkout} from "./pages/Checkout";
 import {About} from "./pages/About";
+import {Service} from "./pages/Service";
+import {NewsPageDynamic} from "./pages/NewsPageDynamic";
 
 function App() {
   const [user, setUser] = useState('');
@@ -52,6 +54,8 @@ function App() {
                 <Route path="cart" element={<Cart/>}  key={document.location.href}/>
                 <Route path="typing" element={<Typing/>} />
                 <Route path="wiki" element={<Wiki/>} />
+                <Route path="service" element={<Service/>} />
+                <Route path="news" element={<NewsPageDynamic/>} />
               </Route>
 
               <Route path="checkout" element={<Checkout/>} />
